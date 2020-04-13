@@ -34,13 +34,13 @@ Oh My Zsh is installed by running one of the following commands in your terminal
 #### via curl
 
 ```shell
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://github.com/lylyulei/ohmyzsh/master/tools/install.sh)"
 ```
 
 #### via wget
 
 ```shell
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(wget -O- https://github.com/lylyulei/ohmyzsh/master/tools/install.sh)"
 ```
 
 #### Manual inspection
@@ -157,164 +157,4 @@ the installer accepts (these settings are also documented at the top of the inst
 The default location is `~/.oh-my-zsh` (hidden in your home directory)
 
 If you'd like to change the install directory with the `ZSH` environment variable, either by running
-`export ZSH=/your/path` before installing, or by setting it before the end of the install pipeline
-like this:
-
-```shell
-ZSH="$HOME/.dotfiles/oh-my-zsh" sh install.sh
-```
-
-#### Unattended install
-
-If you're running the Oh My Zsh install script as part of an automated install, you can pass the
-flag `--unattended` to the `install.sh` script. This will have the effect of not trying to change
-the default shell, and also won't run `zsh` when the installation has finished.
-
-```shell
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-```
-
-#### Installing from a forked repository
-
-The install script also accepts these variables to allow installation of a different repository:
-
-- `REPO` (default: `ohmyzsh/ohmyzsh`): this takes the form of `owner/repository`. If you set
-  this variable, the installer will look for a repository at `https://github.com/{owner}/{repository}`.
-
-- `REMOTE` (default: `https://github.com/${REPO}.git`): this is the full URL of the git repository
-  clone. You can use this setting if you want to install from a fork that is not on GitHub (GitLab,
-  Bitbucket...) or if you want to clone with SSH instead of HTTPS (`git@github.com:user/project.git`).
-
-  _NOTE: it's incompatible with setting the `REPO` variable. This setting will take precedence._
-
-- `BRANCH` (default: `master`): you can use this setting if you want to change the default branch to be
-  checked out when cloning the repository. This might be useful for testing a Pull Request, or if you
-  want to use a branch other than `master`.
-
-For example:
-
-```shell
-REPO=apjanke/oh-my-zsh BRANCH=edge sh install.sh
-```
-
-#### Manual Installation
-
-##### 1. Clone the repository:
-
-```shell
-git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-```
-
-##### 2. *Optionally*, backup your existing `~/.zshrc` file:
-
-```shell
-cp ~/.zshrc ~/.zshrc.orig
-```
-
-##### 3. Create a new zsh configuration file
-
-You can create a new zsh config file by copying the template that we have included for you.
-
-```shell
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-```
-
-##### 4. Change your default shell
-
-```shell
-chsh -s $(which zsh)
-```
-
-You must log out from your user session and log back in to see this change.
-
-##### 5. Initialize your new zsh configuration
-
-Once you open up a new terminal window, it should load zsh with Oh My Zsh's configuration.
-
-### Installation Problems
-
-If you have any hiccups installing, here are a few common fixes.
-
-* You _might_ need to modify your `PATH` in `~/.zshrc` if you're not able to find some commands after
-switching to `oh-my-zsh`.
-* If you installed manually or changed the install location, check the `ZSH` environment variable in
-`~/.zshrc`.
-
-### Custom Plugins and Themes
-
-If you want to override any of the default behaviors, just add a new file (ending in `.zsh`) in the `custom/` directory.
-
-If you have many functions that go well together, you can put them as a `XYZ.plugin.zsh` file in the `custom/plugins/` directory and then enable this plugin.
-
-If you would like to override the functionality of a plugin distributed with Oh My Zsh, create a plugin of the same name in the `custom/plugins/` directory and it will be loaded instead of the one in `plugins/`.
-
-## Getting Updates
-
-By default, you will be prompted to check for upgrades every few weeks. If you would like `oh-my-zsh` to automatically upgrade itself without prompting you, set the following in your `~/.zshrc`:
-
-```shell
-DISABLE_UPDATE_PROMPT=true
-```
-
-To disable automatic upgrades, set the following in your `~/.zshrc`:
-
-```shell
-DISABLE_AUTO_UPDATE=true
-```
-
-### Manual Updates
-
-If you'd like to upgrade at any point in time (maybe someone just released a new plugin and you don't want to wait a week?) you just need to run:
-
-```shell
-upgrade_oh_my_zsh
-```
-
-Magic! 🎉
-
-## Uninstalling Oh My Zsh
-
-Oh My Zsh isn't for everyone. We'll miss you, but we want to make this an easy breakup.
-
-If you want to uninstall `oh-my-zsh`, just run `uninstall_oh_my_zsh` from the command-line. It will remove itself and revert your previous `bash` or `zsh` configuration.
-
-## How do I contribute to Oh My Zsh?
-
-Before you participate in our delightful community, please read the [code of conduct](CODE_OF_CONDUCT.md).
-
-I'm far from being a [Zsh](https://www.zsh.org/) expert and suspect there are many ways to improve – if you have ideas on how to make the configuration easier to maintain (and faster), don't hesitate to fork and send pull requests!
-
-We also need people to test out pull-requests. So take a look through [the open issues](https://github.com/ohmyzsh/ohmyzsh/issues) and help where you can.
-
-See [Contributing](CONTRIBUTING.md) for more details.
-
-### Do NOT send us themes
-
-We have (more than) enough themes for the time being. Please add your theme to the [external themes](https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes) wiki page.
-
-## Contributors
-
-Oh My Zsh has a vibrant community of happy users and delightful contributors. Without all the time and help from our contributors, it wouldn't be so awesome.
-
-Thank you so much!
-
-## Follow Us
-
-We're on the social media.
-
-* [@ohmyzsh](https://twitter.com/ohmyzsh) on Twitter. You should follow it.
-* [Oh My Zsh](https://www.facebook.com/Oh-My-Zsh-296616263819290/) on Facebook.
-
-## Merchandise
-
-We have [stickers, shirts, and coffee mugs available](https://shop.planetargon.com/collections/oh-my-zsh?utm_source=github) for you to show off your love of Oh My Zsh. Again, you will become the talk of the town!
-
-## License
-
-Oh My Zsh is released under the [MIT license](LICENSE.txt).
-
-## About Planet Argon
-
-![Planet Argon](https://pa-github-assets.s3.amazonaws.com/PARGON_logo_digital_COL-small.jpg)
-
-Oh My Zsh was started by the team at [Planet Argon](https://www.planetargon.com/?utm_source=github), a [Ruby on Rails development agency](https://www.planetargon.com/skills/ruby-on-rails-development?utm_source=github). Check out our [other open source projects](https://www.planetargon.com/open-source?utm_source=github).
+`export ZSH=/your/path` before installing, or by setting it before the end 
